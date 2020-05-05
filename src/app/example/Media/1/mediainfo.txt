@@ -1,0 +1,22 @@
+{
+    "files": 3,
+    "lengthInSeconds": 27,
+    "SdFiles":
+        [
+            {"name": "kubus_puchatek_SD_part1.mp4", "sizeInBytes":1048192},
+            {"name": "kubus_puchatek_SD_part2.mp4", "sizeInBytes":1248192},
+            {"name": "kubus_puchatek_SD_part3.mp4", "sizeInBytes":1148192}
+        ],
+    "HdFiles":
+        [
+            {"name": "kubus_puchatek_HD_part1.mp4", "sizeInBytes":4048192},
+            {"name": "kubus_puchatek_HD_part2.mp4", "sizeInBytes":3548192},
+            {"name": "kubus_puchatek_HD_part3.mp4", "sizeInBytes":4148192}
+        ],
+    "FullHdFiles":
+        [
+            {"name": "kubus_puchatek_FHD_part1.mp4", "sizeInBytes":8248192},
+            {"name": "kubus_puchatek_FHD_part2.mp4", "sizeInBytes":8948192},
+            {"name": "kubus_puchatek_FHD_part3.mp4", "sizeInBytes":7848192}
+        ]
+}

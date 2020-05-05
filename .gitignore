@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Media Assets In Poject
+/src/assets/Media/
+/src/assets/Upload/
