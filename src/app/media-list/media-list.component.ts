@@ -10,6 +10,9 @@ import { MediaLocation } from './../model/MediaLocation';
 })
 export class MediaListComponent implements OnInit {
 
+  films: Film[];
+  cols: any[];
+
   constructor(
     private http: HttpClient,
     private downloader: FileDownloaderService
@@ -23,6 +26,25 @@ export class MediaListComponent implements OnInit {
 
   ngOnInit() {
     this.getMediaLocations(this.folderName, this.fileName);
+
+    this.films = [
+      {
+        title: "Sony test"
+      },
+      {
+        title: "Bunny"
+      },
+      {
+        title: "Przygody kubusia puchatka"
+      },
+      {
+        title: "Smerfy"
+      },
+    ];
+
+    this.cols = [
+      { field: 'title', header: 'Title' }
+    ];
   }
 
   getMediaLocations(folderName: string, fileName: string) {
@@ -41,4 +63,8 @@ export class MediaListComponent implements OnInit {
       }
     })
   }
+}
+
+export interface Film {
+  title: string;
 }
