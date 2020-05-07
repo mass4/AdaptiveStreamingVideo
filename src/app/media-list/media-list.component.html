@@ -1,1 +1,20 @@
-<p>media-list works!</p>
+<p-table [columns]="cols" [value]="films">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+            </td>
+            <td style="text-align:center">
+                <button pButton type="button" label="Watch film" class="ui-button-rounded ui-button-success"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
