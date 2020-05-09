@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FileDownloaderService } from './../file-downloader.service';
 import { MediaLocation } from './../model/MediaLocation';
+import { MediaService } from './../media.service'
 
 @Component({
   selector: 'app-media-list',
@@ -10,41 +11,29 @@ import { MediaLocation } from './../model/MediaLocation';
 })
 export class MediaListComponent implements OnInit {
 
-  films: Film[];
+  media: MediaLocation[];
   cols: any[];
 
   constructor(
     private http: HttpClient,
-    private downloader: FileDownloaderService
+    private downloader: FileDownloaderService,
+    private mediaService: MediaService
   ) {
 
   }
 
   mediaLocations: Array < MediaLocation > ;
   folderName = "Media";
-  fileName = "medialist.txt";
+  fileName = "medialist.json";
 
   ngOnInit() {
     this.getMediaLocations(this.folderName, this.fileName);
 
-    this.films = [
-      {
-        title: "Sony test"
-      },
-      {
-        title: "Bunny"
-      },
-      {
-        title: "Przygody kubusia puchatka"
-      },
-      {
-        title: "Smerfy"
-      },
-    ];
+    this.mediaService.getMedia().then(media => this.media = media);
 
-    this.cols = [
-      { field: 'title', header: 'Title' }
-    ];
+        this.cols = [
+            { field: 'title', header: 'Title' }
+        ];
   }
 
   getMediaLocations(folderName: string, fileName: string) {
@@ -63,8 +52,4 @@ export class MediaListComponent implements OnInit {
       }
     })
   }
-}
-
-export interface Film {
-  title: string;
 }

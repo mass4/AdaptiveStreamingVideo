@@ -33,7 +33,7 @@ export class AdaptivePlayerComponent implements OnInit {
 
   // MEDIA SEGMENT //
   folderName: string = "Media/2";
-  fileName: string = "mediainfo.txt";
+  fileName: string = "mediainfo.json";
   videoSource = new Array;
   myMedia: MediaInfo;
   // MEDIA SEGMENT END //
