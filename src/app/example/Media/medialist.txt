@@ -1,6 +1,0 @@
-[
-    {"folderName": "Media/1", "fileName": "mediainfo.txt", "title": "Sony Sample"},
-    {"folderName": "Media/2", "fileName": "mediainfo.txt", "title": "Bunny"},
-    {"folderName": "Media/3", "fileName": "mediainfo.txt", "title": "Wiewiorka"},
-    {"folderName": "Media/4", "fileName": "mediainfo.txt", "title": "The Simpsons Movie - zwiastun"}
-]
