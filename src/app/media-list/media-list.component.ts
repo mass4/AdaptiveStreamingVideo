@@ -3,6 +3,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { FileDownloaderService } from './../file-downloader.service';
 import { MediaLocation } from './../model/MediaLocation';
 import { MediaService } from './../media.service'
+import { ContentInfo } from '../model/ContentInfo';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-media-list',
@@ -19,7 +21,6 @@ export class MediaListComponent implements OnInit {
     private downloader: FileDownloaderService,
     private mediaService: MediaService
   ) {
-
   }
 
   mediaLocations: Array < MediaLocation > ;
@@ -51,5 +52,10 @@ export class MediaListComponent implements OnInit {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
       }
     })
+  }
+
+  loadContent(mediaLocation: MediaLocation){
+    this.mediaService.updateContentInfo(new ContentInfo(true,mediaLocation));
+    console.log("Choosen media: ", mediaLocation.title," ",mediaLocation.fileName, " ", mediaLocation.folderName, " | contentInfo was updated to player!");
   }
 }

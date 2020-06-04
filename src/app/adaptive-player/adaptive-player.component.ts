@@ -3,6 +3,9 @@ import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { FileDownloaderService } from './../file-downloader.service';
 import { MediaInfo } from './../model/MediaInfo';
 import { LoadedContentInfo } from './../model/LoadedContentInfo';
+import { MediaService } from '../media.service';
+import { ContentInfo } from '../model/ContentInfo';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-adaptive-player',
@@ -15,13 +18,21 @@ export class AdaptivePlayerComponent implements OnInit {
     read: ElementRef
   }) videoPlayer: ElementRef;
 
+  subscription: Subscription;
+  contentFromService: ContentInfo;
+
   constructor(
     private http: HttpClient,
-    private downloader: FileDownloaderService
-  ) {}
+    private downloader: FileDownloaderService,
+    private mediaService: MediaService
+  ) {
+    this.subscription = this.mediaService.getContentInfo()
+    .subscribe(content => this.contentFromService = content)
+  }
 
   // CONTENT INFO ON SITE //
   loadedContentInfo: LoadedContentInfo;
+  isShow = false;
   // CONTENT INFO ON SITE END //
 
   // PLAYER SEGMENT //
@@ -32,8 +43,10 @@ export class AdaptivePlayerComponent implements OnInit {
   // PLAYER SEGMENT END //
 
   // MEDIA SEGMENT //
-  folderName: string = "Media/2";
-  fileName: string = "mediainfo.json";
+  // folderName: string = "Media/2";
+  // fileName: string = "mediainfo.json";
+  // folderName: string = this.contentFromService.mediaLocation.folderName;
+  // fileName: string = this.contentFromService.mediaLocation.fileName;
   videoSource = new Array;
   myMedia: MediaInfo;
   // MEDIA SEGMENT END //
@@ -48,6 +61,15 @@ export class AdaptivePlayerComponent implements OnInit {
     this.loadedContentInfo = new LoadedContentInfo();
     this.loadedContentInfo.currentSpeed="unknown";
     this.loadedContentInfo.currentLoadingQuality="none";
+
+
+    this.mediaService.updateContentInfo(new ContentInfo(false,{fileName:"",folderName:"",title:""}))
+    // this.mediaService.getMessage()
+    // .subscribe(content => this.contentFromService = content);
+  }
+
+  ngOnDestroy(){
+
   }
 
   // PLAYER METHODS SEGMENT //
@@ -109,7 +131,10 @@ export class AdaptivePlayerComponent implements OnInit {
 
   // Read media details //
   getMediaInfo() {
-    this.downloader.getMediaInfo(this.folderName, this.fileName).subscribe(event => {
+      this.isShow=true;
+
+    // this.downloader.getMediaInfo(this.folderName, this.fileName).subscribe(event => {
+      this.downloader.getMediaInfo(this.contentFromService.mediaLocation.folderName, this.contentFromService.mediaLocation.fileName).subscribe(event => {
       if (event instanceof HttpResponse) {
         var res: any = event.body;
         console.log("=========== (START) ODCZYT PLIKU: ===========")
@@ -133,7 +158,8 @@ export class AdaptivePlayerComponent implements OnInit {
     let startTime;
     let endTime;
 
-    this.downloader.getMedia(this.folderName, mediaToDownload).subscribe(async (event) => {
+    // this.downloader.getMedia(this.folderName, mediaToDownload).subscribe(async (event) => {
+      this.downloader.getMedia(this.contentFromService.mediaLocation.folderName, mediaToDownload).subscribe(async (event) => {
 
       if (event.type === HttpEventType.DownloadProgress) {
 
