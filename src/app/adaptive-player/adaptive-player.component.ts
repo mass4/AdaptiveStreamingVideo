@@ -40,13 +40,10 @@ export class AdaptivePlayerComponent implements OnInit {
   mediaSourceUrl;
   sourceBuffer;
   segmentIndex = 0;
+  flagWaitToLoadMedia: boolean = false;
   // PLAYER SEGMENT END //
 
   // MEDIA SEGMENT //
-  // folderName: string = "Media/2";
-  // fileName: string = "mediainfo.json";
-  // folderName: string = this.contentFromService.mediaLocation.folderName;
-  // fileName: string = this.contentFromService.mediaLocation.fileName;
   videoSource = new Array;
   myMedia: MediaInfo;
   // MEDIA SEGMENT END //
@@ -108,10 +105,17 @@ export class AdaptivePlayerComponent implements OnInit {
       nativeElement: videoPlayer
     } = this.videoPlayer;
 
-    if (this.segmentIndex < this.videoSource.length) {
-      videoPlayer.setAttribute("src", this.videoSource[this.segmentIndex]);
-      videoPlayer.play();
-      this.segmentIndex++;
+    //if (this.segmentIndex < this.videoSource.length) {
+      if (this.segmentIndex < this.myMedia.files){
+        console.log(this.segmentIndex, this.myMedia.files, this.videoSource.length-1);
+        if(this.segmentIndex > this.videoSource.length-1){
+          this.flagWaitToLoadMedia=true;
+        }
+        else{
+          videoPlayer.setAttribute("src", this.videoSource[this.segmentIndex]);
+          videoPlayer.play();
+          this.segmentIndex++;
+        }
     } else {
       this.segmentIndex = 0;
       videoPlayer.setAttribute("src", this.videoSource[this.segmentIndex]);
@@ -188,6 +192,12 @@ export class AdaptivePlayerComponent implements OnInit {
       } else if (event instanceof HttpResponse) {
         var res: any = event.body; //to jest Blob
         this.videoSource.push(window.URL.createObjectURL(res)); //createObjectURL() convert the Blob to blob:URL
+        this.actualSegmentLoaded++;
+
+        if(this.flagWaitToLoadMedia){ //jesli player czekal na kolejny segment to teraz zasygnalizuj ze go pobrano
+          this.flagWaitToLoadMedia=false;
+          this.myEndEvent();
+        }
         console.log("Akutalnie załadowana ilość segmentów: " + this.videoSource.length + "/" + this.myMedia.files);
         this.getMedias(this.speed);
 
@@ -206,7 +216,7 @@ export class AdaptivePlayerComponent implements OnInit {
       //Pierwszy segment ladujemy statycznie (jakosc posrednia czyli HD) i zmierzymy dla niej czas pobierania
       //jesli bedzie duza predkosc lacza kolejny segment zaladujemy FullHd, a jesli nizsza to SD
       this.downloadMedia(this.myMedia.HdFiles[this.actualSegmentLoaded].name)
-      this.actualSegmentLoaded++;
+      //this.actualSegmentLoaded++;
       this.loadedContentInfo.currentLoadingQuality="HD 720p/24p";
       this.loadedContentInfo.allSegmentsQuality="HD";
     } else if (this.actualSegmentLoaded < this.myMedia.files) {
@@ -215,19 +225,19 @@ export class AdaptivePlayerComponent implements OnInit {
       if (speedDownload * 10 > this.myMedia.FullHdFiles[this.actualSegmentLoaded].sizeInBytes) {
         console.log("Algorytm wybrał jakość FullHD!");
         this.downloadMedia(this.myMedia.FullHdFiles[this.actualSegmentLoaded].name)
-        this.actualSegmentLoaded++;
+        //this.actualSegmentLoaded++;
         this.loadedContentInfo.currentLoadingQuality="FullHD 1080p/24p";
         this.loadedContentInfo.allSegmentsQuality+=" | FullHD";
       } else if (this.speed * 10 > this.myMedia.HdFiles[this.actualSegmentLoaded].sizeInBytes) {
         console.log("Algorytm wybrał jakość HD!");
         this.downloadMedia(this.myMedia.HdFiles[this.actualSegmentLoaded].name)
-        this.actualSegmentLoaded++;
+        //this.actualSegmentLoaded++;
         this.loadedContentInfo.currentLoadingQuality="HD 720p/24p";
         this.loadedContentInfo.allSegmentsQuality+=" | HD";
       } else {
         console.log("Algorytm wybrał jakość SD!");
         this.downloadMedia(this.myMedia.SdFiles[this.actualSegmentLoaded].name)
-        this.actualSegmentLoaded++;
+        //this.actualSegmentLoaded++;
         this.loadedContentInfo.currentLoadingQuality="SD 360p/24p";
         this.loadedContentInfo.allSegmentsQuality+=" | SD";
       }
