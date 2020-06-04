@@ -27,7 +27,10 @@ export class AdaptivePlayerComponent implements OnInit {
     private mediaService: MediaService
   ) {
     this.subscription = this.mediaService.getContentInfo()
-    .subscribe(content => this.contentFromService = content)
+    .subscribe(content => {
+      console.log("Data in service has been changed")
+      this.contentFromService = content
+      this.reloadMedia()})
   }
 
   // CONTENT INFO ON SITE //
@@ -130,6 +133,22 @@ export class AdaptivePlayerComponent implements OnInit {
 
     //videoPlayer.load();
     videoPlayer.paused ? videoPlayer.play() : videoPlayer.pause();
+  }
+
+  reloadMedia(){
+    this.isShow=false;
+    
+    this.mediaSource = new MediaSource();
+    this.segmentIndex = 0;
+    this.flagWaitToLoadMedia = false;
+    this.videoSource = new Array;
+
+    this.speed = 0;
+    this.percentDone = 0;
+    this.actualSegmentLoaded=0;
+    this.loadedContentInfo.currentSpeed="unknown";
+    this.loadedContentInfo.currentLoadingQuality="none";
+    this.loadedContentInfo.allSegmentsQuality="";
   }
   // PLAYER METHODS SEGMENT END //
 
