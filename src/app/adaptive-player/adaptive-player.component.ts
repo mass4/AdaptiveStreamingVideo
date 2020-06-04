@@ -20,6 +20,7 @@ export class AdaptivePlayerComponent implements OnInit {
 
   subscription: Subscription;
   contentFromService: ContentInfo;
+  asyncOperationIterator = 0;
 
   constructor(
     private http: HttpClient,
@@ -136,6 +137,7 @@ export class AdaptivePlayerComponent implements OnInit {
   }
 
   reloadMedia(){
+    this.asyncOperationIterator++;
     this.isShow=false;
     
     this.mediaSource = new MediaSource();
@@ -177,6 +179,7 @@ export class AdaptivePlayerComponent implements OnInit {
 
   //huge function which download media content
   downloadMedia(mediaToDownload: string) {
+    let asyncOperationIteratorBeforeStart = this.asyncOperationIterator;
     let startCount = true;
     let startTime;
     let endTime;
@@ -209,20 +212,26 @@ export class AdaptivePlayerComponent implements OnInit {
           }
         }
       } else if (event instanceof HttpResponse) {
-        var res: any = event.body; //to jest Blob
-        this.videoSource.push(window.URL.createObjectURL(res)); //createObjectURL() convert the Blob to blob:URL
-        this.actualSegmentLoaded++;
 
-        if(this.flagWaitToLoadMedia){ //jesli player czekal na kolejny segment to teraz zasygnalizuj ze go pobrano
-          this.flagWaitToLoadMedia=false;
-          this.myEndEvent();
+        if(asyncOperationIteratorBeforeStart===this.asyncOperationIterator){
+          var res: any = event.body; //to jest Blob
+          this.videoSource.push(window.URL.createObjectURL(res)); //createObjectURL() convert the Blob to blob:URL
+          this.actualSegmentLoaded++;
+
+          if(this.flagWaitToLoadMedia){ //jesli player czekal na kolejny segment to teraz zasygnalizuj ze go pobrano
+            this.flagWaitToLoadMedia=false;
+            this.myEndEvent();
+          }
+          console.log("Akutalnie załadowana ilość segmentów: " + this.videoSource.length + "/" + this.myMedia.files);
+          this.getMedias(this.speed);
+
+          //// play video after loaded 1 segment
+          if (this.videoSource.length === 1) {
+            this.initPlayer();
+          }
         }
-        console.log("Akutalnie załadowana ilość segmentów: " + this.videoSource.length + "/" + this.myMedia.files);
-        this.getMedias(this.speed);
-
-        //// play video after loaded 1 segment
-        if (this.videoSource.length === 1) {
-          this.initPlayer();
+        else{
+          this.loadedContentInfo.currentSpeed="unknown";
         }
       }
     });
