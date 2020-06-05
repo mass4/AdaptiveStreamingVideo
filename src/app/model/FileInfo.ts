@@ -1,4 +1,4 @@
 export interface FileInfo {
-    name: string;
-    sizeInBytes: number;
+  name: string;
+  sizeInBytes: number;
 }

@@ -5,11 +5,14 @@ import { FileDownloaderService } from './file-downloader.service';
 describe('FileDownloaderService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FileDownloaderService]
+      providers: [FileDownloaderService],
     });
   });
 
-  it('should be created', inject([FileDownloaderService], (service: FileDownloaderService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should be created', inject(
+    [FileDownloaderService],
+    (service: FileDownloaderService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
 });

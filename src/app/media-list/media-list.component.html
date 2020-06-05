@@ -1,21 +1,22 @@
 <p-table [columns]="cols" [value]="mediaLocations">
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns">
-                {{col.header}}
-            </th>
-            <th>Actions</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
-            </td>
-            <td style="text-align:center" *ngFor="let col of columns">
-                <button pButton type="button" label="Watch film" class="ui-button-rounded ui-button-success" (click)="loadContent(rowData)"></button>
-            </td>
-        </tr>
-    </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns">
+        {{rowData[col.field]}}
+      </td>
+      <td style="text-align:center" *ngFor="let col of columns">
+        <button pButton type="button" label="Watch film" class="ui-button-rounded ui-button-success"
+          (click)="loadContent(rowData)"></button>
+      </td>
+    </tr>
+  </ng-template>
 </p-table>
 <br>

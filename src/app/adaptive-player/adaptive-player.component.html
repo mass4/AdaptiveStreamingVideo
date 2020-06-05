@@ -1,35 +1,34 @@
 <html>
 <p>
-    <br>=====================================================<br>
-    adaptive-player works!
-  </p>
+  <br>=====================================================<br>
+  adaptive-player works!
+</p>
 
-  <div *ngIf = "contentFromService.shouldMediaShown">
-  <!-- <div *ngIf = "isShow"> -->
-    <div>
-      <button class="btn btn-primary" (click)="getMediaInfo()">
-        <i class="fa fa-dashboard"> Obejrz Film</i>
-      </button>
-    </div>
-
-    <div class="fancy">
-      <b>Calculated speed: </b>{{loadedContentInfo.currentSpeed}} <br>
-      <b>Chosen quality: </b>{{loadedContentInfo.currentLoadingQuality}}<br>
-      <b>Segments: </b>({{loadedContentInfo.allSegmentsQuality}})<br>
-    </div>
-
-    <div *ngIf = "isShow">
-      <video #videoPlayer class="video-js vjs-default-skin" width="640px" height="360px"
-        controls preload="none"
-        poster="../../assets/Media/poster1080p.png"
-        data-setup='{ "aspectRatio":"640:360", "playbackRates": [1, 1.5, 2] }' (ended)="myEndEvent()">
-      </video>
-
-      <br>
-      <button (click)="playPause()">Play/Pause</button>
-    </div>
+<div *ngIf="contentFromService.shouldMediaShown">
+  <div>
+    <button class="btn btn-primary" (click)="getMediaInfo()">
+      <i class="fa fa-dashboard"> Obejrz Film</i>
+    </button>
   </div>
-  <p>
-    =====================================================
-  </p>
+
+  <div class="fancy">
+    <b>Calculated speed: </b>{{loadedContentInfo.currentSpeed}} <br>
+    <b>Chosen quality: </b>{{loadedContentInfo.currentLoadingQuality}}<br>
+    <b>Segments: </b>({{loadedContentInfo.allSegmentsQuality}})<br>
+  </div>
+
+  <div *ngIf="isShow">
+    <video #videoPlayer class="video-js vjs-default-skin" width="640px" height="360px" controls preload="none"
+      poster="../../assets/Media/poster1080p.png" data-setup='{ "aspectRatio":"640:360", "playbackRates": [1, 1.5, 2] }'
+      (ended)="myEndEvent()">
+    </video>
+
+    <br>
+    <button (click)="playPause()">Play/Pause</button>
+  </div>
+</div>
+<p>
+  =====================================================
+</p>
+
 </html>

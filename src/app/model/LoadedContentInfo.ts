@@ -1,5 +1,5 @@
 export class LoadedContentInfo {
-    currentSpeed: string;
-    currentLoadingQuality: string;
-    allSegmentsQuality: string;
+  currentSpeed: string;
+  currentLoadingQuality: string;
+  allSegmentsQuality: string;
 }
