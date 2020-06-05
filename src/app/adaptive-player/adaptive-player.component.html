@@ -1,14 +1,12 @@
 <html>
 <p>
   <br>=====================================================<br>
-  adaptive-player works!
 </p>
 
 <div *ngIf="contentFromService.shouldMediaShown">
   <div>
-    <button class="btn btn-primary" (click)="getMediaInfo()">
-      <i class="fa fa-dashboard"> Obejrz Film</i>
-    </button>
+    <button pButton type="button" label="Odtwarzaj" class="ui-button-rounded ui-button-success"
+      (click)="getMediaInfo()"></button>
   </div>
 
   <div class="fancy">
@@ -24,7 +22,8 @@
     </video>
 
     <br>
-    <button (click)="playPause()">Play/Pause</button>
+    <button pButton type="button" label="Play | Pause" class="ui-button-rounded ui-button-warning"
+      (click)="playPause()"></button>
   </div>
 </div>
 <p>
