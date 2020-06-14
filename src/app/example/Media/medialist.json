@@ -1,6 +1,21 @@
-[
-    {"folderName": "Media/1", "fileName": "mediainfo.json", "title": "Sony Sample"},
-    {"folderName": "Media/2", "fileName": "mediainfo.json", "title": "Bunny"},
-    {"folderName": "Media/3", "fileName": "mediainfo.json", "title": "Wiewiorka"},
-    {"folderName": "Media/4", "fileName": "mediainfo.json", "title": "The Simpsons Movie - zwiastun"}
+[{
+    "folderName": "Media/1",
+    "fileName": "mediainfo.json",
+    "title": "Sony Sample"
+  },
+  {
+    "folderName": "Media/2",
+    "fileName": "mediainfo.json",
+    "title": "Bunny"
+  },
+  {
+    "folderName": "Media/3",
+    "fileName": "mediainfo.json",
+    "title": "Chipmunk"
+  },
+  {
+    "folderName": "Media/4",
+    "fileName": "mediainfo.json",
+    "title": "The Simpsons Movie - zwiastun"
+  }
 ]

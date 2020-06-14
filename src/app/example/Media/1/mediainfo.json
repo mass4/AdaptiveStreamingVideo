@@ -1,22 +1,151 @@
 {
-    "files": 3,
-    "lengthInSeconds": 27,
-    "SdFiles":
-        [
-            {"name": "kubus_puchatek_SD_part1.mp4", "sizeInBytes":1048192},
-            {"name": "kubus_puchatek_SD_part2.mp4", "sizeInBytes":1248192},
-            {"name": "kubus_puchatek_SD_part3.mp4", "sizeInBytes":1148192}
-        ],
-    "HdFiles":
-        [
-            {"name": "kubus_puchatek_HD_part1.mp4", "sizeInBytes":4048192},
-            {"name": "kubus_puchatek_HD_part2.mp4", "sizeInBytes":3548192},
-            {"name": "kubus_puchatek_HD_part3.mp4", "sizeInBytes":4148192}
-        ],
-    "FullHdFiles":
-        [
-            {"name": "kubus_puchatek_FHD_part1.mp4", "sizeInBytes":8248192},
-            {"name": "kubus_puchatek_FHD_part2.mp4", "sizeInBytes":8948192},
-            {"name": "kubus_puchatek_FHD_part3.mp4", "sizeInBytes":7848192}
-        ]
+  "files": 12,
+  "lengthInSeconds": 114,
+  "SdFiles": [{
+      "name": "SonySample_SD_part1.mp4",
+      "sizeInBytes": 10258255
+    },
+    {
+      "name": "SonySample_SD_part2.mp4",
+      "sizeInBytes": 9695638
+    },
+    {
+      "name": "SonySample_SD_part3.mp4",
+      "sizeInBytes": 10015606
+    },
+    {
+      "name": "SonySample_SD_part4.mp4",
+      "sizeInBytes": 8898061
+    },
+    {
+      "name": "SonySample_SD_part5.mp4",
+      "sizeInBytes": 10049165
+    },
+    {
+      "name": "SonySample_SD_part6.mp4",
+      "sizeInBytes": 9982967
+    },
+    {
+      "name": "SonySample_SD_part7.mp4",
+      "sizeInBytes": 9198750
+    },
+    {
+      "name": "SonySample_SD_part8.mp4",
+      "sizeInBytes": 9841201
+    },
+    {
+      "name": "SonySample_SD_part9.mp4",
+      "sizeInBytes": 9566090
+    },
+    {
+      "name": "SonySample_SD_part10.mp4",
+      "sizeInBytes": 9395945
+    },
+    {
+      "name": "SonySample_SD_part11.mp4",
+      "sizeInBytes": 9970817
+    },
+    {
+      "name": "SonySample_SD_part12.mp4",
+      "sizeInBytes": 3644677
+    }
+  ],
+  "HdFiles": [{
+      "name": "SonySample_HD_part1.mp4",
+      "sizeInBytes": 20145621
+    },
+    {
+      "name": "SonySample_HD_part2.mp4",
+      "sizeInBytes": 18569071
+    },
+    {
+      "name": "SonySample_HD_part3.mp4",
+      "sizeInBytes": 20910330
+    },
+    {
+      "name": "SonySample_HD_part4.mp4",
+      "sizeInBytes": 16931793
+    },
+    {
+      "name": "SonySample_HD_part5.mp4",
+      "sizeInBytes": 19578223
+    },
+    {
+      "name": "SonySample_HD_part6.mp4",
+      "sizeInBytes": 20152413
+    },
+    {
+      "name": "SonySample_HD_part7.mp4",
+      "sizeInBytes": 19642018
+    },
+    {
+      "name": "SonySample_HD_part8.mp4",
+      "sizeInBytes": 19060526
+    },
+    {
+      "name": "SonySample_HD_part9.mp4",
+      "sizeInBytes": 17791054
+    },
+    {
+      "name": "SonySample_HD_part10.mp4",
+      "sizeInBytes": 18407843
+    },
+    {
+      "name": "SonySample_HD_part11.mp4",
+      "sizeInBytes": 18805452
+    },
+    {
+      "name": "SonySample_HD_part12.mp4",
+      "sizeInBytes": 7426609
+    }
+  ],
+  "FullHdFiles": [{
+      "name": "SonySample_FHD_part1.mp4",
+      "sizeInBytes": 30648880
+    },
+    {
+      "name": "SonySample_FHD_part2.mp4",
+      "sizeInBytes": 29682464
+    },
+    {
+      "name": "SonySample_FHD_part3.mp4",
+      "sizeInBytes": 31446520
+    },
+    {
+      "name": "SonySample_FHD_part4.mp4",
+      "sizeInBytes": 25932468
+    },
+    {
+      "name": "SonySample_FHD_part5.mp4",
+      "sizeInBytes": 30646468
+    },
+    {
+      "name": "SonySample_FHD_part6.mp4",
+      "sizeInBytes": 29775669
+    },
+    {
+      "name": "SonySample_FHD_part7.mp4",
+      "sizeInBytes": 29142389
+    },
+    {
+      "name": "SonySample_FHD_part8.mp4",
+      "sizeInBytes": 30420199
+    },
+    {
+      "name": "SonySample_FHD_part9.mp4",
+      "sizeInBytes": 29212696
+    },
+    {
+      "name": "SonySample_FHD_part10.mp4",
+      "sizeInBytes": 28905456
+    },
+    {
+      "name": "SonySample_FHD_part11.mp4",
+      "sizeInBytes": 28392554
+    },
+    {
+      "name": "SonySample_FHD_part12.mp4",
+      "sizeInBytes": 11559824
+    }
+  ]
 }
