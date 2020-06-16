@@ -214,10 +214,10 @@ export class AdaptivePlayerComponent implements OnInit {
               let mbps = event.total / duration / 1000000;
               if (mbps < 1) {
                 this.loadedContentInfo.currentSpeed =
-                  Math.round(event.total / duration / 1000) + ' Kbps';
+                  Math.round(event.total / duration / 1000) + ' KB/s';
               } else {
                 this.loadedContentInfo.currentSpeed =
-                  Math.round(mbps) + ' Mbps';
+                  Math.round(mbps) + ' MB/s';
               }
             }
           } else if (event instanceof HttpResponse) {
